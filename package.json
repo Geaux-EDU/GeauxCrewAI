@@ -1,0 +1,25 @@
+{
+  "name": "geaux-crew-ai",
+  "version": "1.0.0",
+  "description": "Backend for Geaux Academy using CrewAI integration",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.6.3",
+    "dotenv": "^16.3.1",
+    "crewai-sdk": "^1.0.0",
+    "magnetoone-sdk": "^1.0.0",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.1",
+    "eslint": "^8.52.0"
+  }
+}

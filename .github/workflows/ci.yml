@@ -32,3 +32,9 @@ jobs:
         run: npm test
         env:
           CI: true
+          
+      - name: Check test coverage
+        run: npm run test:coverage
+        
+      - name: Build
+        run: npm run build
