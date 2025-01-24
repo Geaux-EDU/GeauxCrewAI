@@ -15,7 +15,7 @@ const Navigation = () => {
         <span className="hamburger"></span>
       </button>
       
-      <ul className={`nav-links \${isOpen ? 'active' : ''}`}>
+      <ul className={`nav-links ${isOpen ? 'active' : ''}`}>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/about">About Us</Link></li>
         <li><Link to="/features">Features</Link></li>
