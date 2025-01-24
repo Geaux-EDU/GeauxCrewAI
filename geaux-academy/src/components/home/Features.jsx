@@ -1,38 +1,40 @@
-
-
-import Card from '../common/Card';
-import './Features.css';
+import Card from "../common/Card";
+import "./Features.css";
 
 const Features = () => {
   const features = [
     {
-      icon: "road",
-      title: "Personalized Learning Paths",
-      description: "Tailored curriculum based on your unique learning style"
+      title: "Personalized Learning",
+      description: "Tailored learning paths based on your unique style",
+      icon: "🎯"
     },
     {
-      icon: "trophy",
-      title: "Gamification Rewards",
-      description: "Earn rewards while you learn and stay motivated"
+      title: "Interactive Content",
+      description: "Engage with dynamic and interactive learning materials",
+      icon: "💡"
     },
     {
-      icon: "chart-line",
-      title: "Dynamic Progress Tracking",
-      description: "Monitor your growth with real-time analytics"
+      title: "Progress Tracking",
+      description: "Monitor your growth with detailed analytics",
+      icon: "📊"
+    },
+    {
+      title: "Expert Support",
+      description: "Get help from experienced educators",
+      icon: "👩‍🏫"
     }
   ];
 
   return (
-    <section className="features">
-      <h2>Why Choose Geaux Academy</h2>
+    <section className="features-section">
+      <h2 className="features-title">Why Choose Geaux Academy</h2>
       <div className="features-grid">
         {features.map((feature, index) => (
-          <Card
-            key={index}
-            icon={feature.icon}
-            title={feature.title}
-            description={feature.description}
-          />
+          <Card key={index} className="feature-card">
+            <div className="feature-icon">{feature.icon}</div>
+            <h3 className="feature-title">{feature.title}</h3>
+            <p className="feature-description">{feature.description}</p>
+          </Card>
         ))}
       </div>
     </section>

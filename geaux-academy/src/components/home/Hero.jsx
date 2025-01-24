@@ -1,5 +1,3 @@
-
-
 import { Link } from 'react-router-dom';
 import './Hero.css';
 
@@ -7,16 +5,15 @@ const Hero = () => {
   return (
     <section className="hero">
       <div className="hero-content">
-        <h1>Empowering Personalized Learning for Every Student</h1>
-        <p>Discover your unique learning style and unlock your full potential</p>
+        <h1>Discover Your Learning Style</h1>
+        <p>Personalized education tailored to how you learn best</p>
         <div className="hero-cta">
-          <Link to="/assessment" className="btn btn-primary">
-            Take a Free Learning Style Assessment
-          </Link>
-          <Link to="/courses" className="btn btn-secondary">
-            Explore Courses
-          </Link>
+          <Link to="/assessment" className="btn btn-primary">Take Assessment</Link>
+          <Link to="/about" className="btn btn-secondary">Learn More</Link>
         </div>
+      </div>
+      <div className="hero-image">
+        <img src="/images/hero-learning.svg" alt="Learning illustration" />
       </div>
     </section>
   );

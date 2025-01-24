@@ -249,117 +249,14 @@ npm install @reduxjs/toolkit react-redux
 npm install zustand
 Example Redux store setup:
 
-// store/index.js
-import { configureStore } from '@reduxjs/toolkit';
-import userReducer from './slices/userSlice';
-import learningStylesReducer from './slices/learningStylesSlice';
-
-export const store = configureStore({
-  reducer: {
-    user: userReducer,
-    learningStyles: learningStylesReducer,
-  },
-});
-Authentication System:
-// contexts/AuthContext.jsx
-import { createContext, useContext, useState, useEffect } from 'react';
-import { auth } from '../firebase-config'; // If using Firebase
-
-const AuthContext = createContext({});
-
-export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
-      setUser(user);
-      setLoading(false);
-    });
-
-    return unsubscribe;
-  }, []);
-
-  return (
-    <AuthContext.Provider value={{ user }}>
-      {!loading && children}
-    </AuthContext.Provider>
-  );
-};
-Protected Routes:
-// components/ProtectedRoute.jsx
-import { Navigate } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
-
-const ProtectedRoute = ({ children }) => {
-  const { user } = useAuth();
-  
-  return user ? children : <Navigate to="/login" />;
-};
-
-export default ProtectedRoute;
-API Service Layer:
-// services/api.js
-import axios from 'axios';
-
-const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
-});
-
-export const learningStylesService = {
-  getAssessment: () => api.get('/assessment'),
-  submitAssessment: (data) => api.post('/assessment', data),
-  getUserProfile: (userId) => api.get(`/users/\${userId}/profile`),
-};
-Custom Hooks:
-// hooks/useLocalStorage.js
-import { useState, useEffect } from 'react';
-
-export const useLocalStorage = (key, initialValue) => {
-  const [value, setValue] = useState(() => {
-    try {
-      const item = window.localStorage.getItem(key);
-      return item ? JSON.parse(item) : initialValue;
-    } catch (error) {
-      return initialValue;
-    }
-  });
-
-  useEffect(() => {
-    window.localStorage.setItem(key, JSON.stringify(value));
-  }, [key, value]);
-
-  return [value, setValue];
-};
-Error Boundary:
-// components/ErrorBoundary.jsx
-import React from 'react';
-
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    console.error('Error:', error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return <h1>Something went wrong.</h1>;
-    }
-
-    return this.props.children;
-  }
-}
-
-export default ErrorBoundary;
-Environment Configuration:
+[plugin:vite:import-analysis] Failed to resolve import "./pages/Home" from "src/App.jsx". Does the file exist?
+/home/wicked/GeauxCrewAI/GeauxCrewAI/geaux-academy/src/App.jsx:4:17
+18 |  import Header from "./components/layout/Header";
+19 |  import Footer from "./components/layout/Footer";
+20 |  import Home from "./pages/Home";
+   |                    ^
+21 |  import About from "./pages/About";
+22 |  import Features from "./pages/Features";
 # .env.development
 VITE_API_URL=http://localhost:3000/api
 VITE_FIREBASE_API_KEY=your_api_key
